@@ -1,9 +1,6 @@
 package com.olufunmi.Orderservice.data.models;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -12,13 +9,14 @@ import java.math.BigDecimal;
 @Table(name="t_order_line_items")
 @Setter
 @Getter
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
-@RequiredArgsConstructor
 public class OrderLineItems {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String skuCode;
     private BigDecimal price;
-    private Integer quantity;
+    private int quantity;
 }

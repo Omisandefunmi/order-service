@@ -1,24 +1,24 @@
 package com.olufunmi.Orderservice.data.models;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name="t_order")
 @Setter
 @Getter
+@Builder
 @NoArgsConstructor
-@RequiredArgsConstructor
+@AllArgsConstructor
+
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String orderNumber;
-    @OneToMany
-    private List <OrderLineItems> orderLineItemsList;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List <OrderLineItems> orderLineItemsList = new ArrayList<>();
 }
